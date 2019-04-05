@@ -1,3 +1,10 @@
+<<<<<<< HEAD
+=======
+//hey
+// fzruigerthoghrt
+
+
+>>>>>>> a32ea2b9b4fc9498ed5f6c8c5c4c67407a5ec11d
 package org.insa.graph;
 
 import java.util.ArrayList;
