@@ -239,12 +239,13 @@ public class Path {
      * on every arc.
      * 
      * @return Minimum travel time to travel this path (in seconds).
-     * 
-     * @deprecated Need to be implemented.
      */
     public double getMinimumTravelTime() {
-        // TODO:
-        return 0;
+    	double time = 0;
+        for (int i=0;i<this.arcs.size();i++) {
+        	time += this.arcs.get(i).getTravelTime(this.arcs.get(i).getRoadInformation().getMaximumSpeed());
+        }
+        return time;
     }
 
 }
