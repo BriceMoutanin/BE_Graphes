@@ -201,7 +201,7 @@ public class Path {
      */
     public boolean isValid() {
     	boolean bool = true;
-    	if(!(this.arcs.isEmpty() || this.arcs.size()==1)) {
+    	if(!(this.isEmpty() || this.size()==1)) {
 			if (this.arcs.get(0).getOrigin()!= this.origin) {
 				bool = false;
 			}
