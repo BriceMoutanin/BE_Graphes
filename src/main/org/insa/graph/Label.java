@@ -37,7 +37,7 @@ public class Label {
 	 * 
 	 * @return The newly created forward Label.
 	 */
-    public Label(int current_node, int cost, Arc father) {
+    public Label(int current_node, float cost, Arc father) {
         this.setCurrent_node(current_node);
         this.setCost(cost);
         this.setFather(father);
@@ -52,7 +52,7 @@ public class Label {
      * 
      * @return The newly created forward Label for the origin.
      */
-    public Label(int current_node, int cost) {
+    public Label(int current_node, float cost) {
         this.setCurrent_node(current_node);
         this.setCost(cost);
         this.setFather(null);
@@ -72,7 +72,7 @@ public class Label {
     /**
      * Current cost from the origin to the current_node.
      */
-    private int cost;
+    private float cost;
     
     /**
      * Arc which represents the father of the current_node.
@@ -108,11 +108,11 @@ public class Label {
 	/**
      * @return the cost of the current_node from the origin.
      */
-	public int getCost() {
+	public float getCost() {
 		return cost;
 	}
 
-	public void setCost(int cost) {
+	public void setCost(float cost) {
 		this.cost = cost;
 	}
 
