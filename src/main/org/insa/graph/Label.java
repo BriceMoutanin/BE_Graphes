@@ -26,7 +26,7 @@ package org.insa.graph;
  * @return The newly created forward Label.
  */
 
-public class Label {
+public class Label implements Comparable<Label> {
 
 	/**
 	 * 
@@ -56,7 +56,7 @@ public class Label {
         this.setCurrent_node(current_node);
         this.setCost(cost);
         this.setFather(null);
-        this.setMarque(true);
+        this.setMarque(false);
     }
 	
     /**
@@ -125,6 +125,11 @@ public class Label {
 
 	public void setFather(Arc father) {
 		this.father = father;
+	}
+
+	@Override
+	public int compareTo(Label o) {
+		return Float.compare(getCost(), o.getCost());
 	}
 
 }
