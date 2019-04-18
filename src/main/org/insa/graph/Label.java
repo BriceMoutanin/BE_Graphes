@@ -37,7 +37,7 @@ public class Label implements Comparable<Label> {
 	 * 
 	 * @return The newly created forward Label.
 	 */
-    public Label(int current_node, float cost, Arc father) {
+    public Label(int current_node, double cost, Arc father) {
         this.setCurrent_node(current_node);
         this.setCost(cost);
         this.setFather(father);
@@ -52,7 +52,7 @@ public class Label implements Comparable<Label> {
      * 
      * @return The newly created forward Label for the origin.
      */
-    public Label(int current_node, float cost) {
+    public Label(int current_node, double cost) {
         this.setCurrent_node(current_node);
         this.setCost(cost);
         this.setFather(null);
@@ -72,13 +72,17 @@ public class Label implements Comparable<Label> {
     /**
      * Current cost from the origin to the current_node.
      */
-    private float cost;
+    private double cost;
     
     /**
      * Arc which represents the father of the current_node.
      */
     private Arc father;
    
+    
+    public String toString() {
+    	return "ID = " + this.getCurrent_node() + " | Coût = " + this.getCost() ;//+ " | ID Père = " + this.getFather().getOrigin().getId();
+    }
     /**
      * @return the ID of the current_node.
      */
@@ -108,12 +112,12 @@ public class Label implements Comparable<Label> {
 	/**
      * @return the cost of the current_node from the origin.
      */
-	public float getCost() {
+	public double getCost() {
 		return cost;
 	}
 
-	public void setCost(float cost) {
-		this.cost = cost;
+	public void setCost(double newdistance) {
+		this.cost = newdistance;
 	}
 
 	/**
@@ -129,7 +133,7 @@ public class Label implements Comparable<Label> {
 
 	@Override
 	public int compareTo(Label o) {
-		return Float.compare(getCost(), o.getCost());
+		return Double.compare(getCost(), o.getCost());
 	}
 
 }
