@@ -51,13 +51,14 @@ public class DijkstraAlgorithm extends ShortestPathAlgorithm {
         // Notify observers about the first event (origin processed).
         notifyOriginProcessed(data.getOrigin());
         
-        System.out.println("Départ = " + data.getOrigin().getId() + " | Arrivée = " + data.getDestination().getId());
+        //System.out.println("Départ = " + data.getOrigin().getId() + " | Arrivée = " + data.getDestination().getId());
         
         Label current_label;
         
         while(!tas.isEmpty()){
         	current_label = tas.deleteMin();
-        	System.out.println("On enlève : " + current_label.toString());
+        	//tas.print();
+        	//System.out.println("On enlève : " + current_label.toString());
         	label_tab[current_label.getCurrent_node()].setMarque(true);
         	if (current_label.getFather() != null) {
         		predecessorArcs[current_label.getFather().getDestination().getId()] = current_label.getFather(); // Add the previous arc to the solution
@@ -65,6 +66,10 @@ public class DijkstraAlgorithm extends ShortestPathAlgorithm {
         	double current_length = current_label.getCost();
         	current_label.setMarque(true);
         	for(Arc arc: graph.getNodes().get(current_label.getCurrent_node()).getSuccessors()) { // For each successors of the current node
+        		// Small test to check allowed roads...
+                if (!data.isAllowed(arc)) {
+                    continue;
+                }
         		Node successor = arc.getDestination();
         		if (!label_tab[successor.getId()].isMarque()) { // Considering only the nodes not marked
         			double olddistance = label_tab[successor.getId()].getCost();
