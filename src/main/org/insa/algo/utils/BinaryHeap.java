@@ -99,7 +99,7 @@ public class BinaryHeap<E extends Comparable<E>> implements PriorityQueue<E> {
         int ileft = index_left(index);
         int iright = ileft + 1;
 
-        if (ileft < this.currentSize) { // S'il existe un fils gauche
+        if (ileft < this.currentSize) { // If a left child exists
             E current = this.array.get(index);
             E left = this.array.get(ileft);
             boolean hasRight = iright < this.currentSize;

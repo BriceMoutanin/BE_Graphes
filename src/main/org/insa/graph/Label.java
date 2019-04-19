@@ -81,7 +81,11 @@ public class Label implements Comparable<Label> {
    
     
     public String toString() {
-    	return "ID = " + this.getCurrent_node() + " | Coût = " + this.getCost() ;//+ " | ID Père = " + this.getFather().getOrigin().getId();
+    	if (this.getFather() == null) {
+    		return "ID = " + this.getCurrent_node() + " | Coût = " + this.getCost() + " | Noeud d'origine";
+    	} else {
+    		return "ID = " + this.getCurrent_node() + " | Coût = " + this.getCost() + " | ID Père = " + this.getFather().getOrigin().getId();
+    	}
     }
     /**
      * @return the ID of the current_node.

@@ -51,11 +51,13 @@ public class DijkstraAlgorithm extends ShortestPathAlgorithm {
         // Notify observers about the first event (origin processed).
         notifyOriginProcessed(data.getOrigin());
         
+        System.out.println("Départ = " + data.getOrigin().getId() + " | Arrivée = " + data.getDestination().getId());
+        
         Label current_label;
         
         while(!tas.isEmpty()){
-        	tas.print();
         	current_label = tas.deleteMin();
+        	System.out.println("On enlève : " + current_label.toString());
         	label_tab[current_label.getCurrent_node()].setMarque(true);
         	if (current_label.getFather() != null) {
         		predecessorArcs[current_label.getFather().getDestination().getId()] = current_label.getFather(); // Add the previous arc to the solution
@@ -76,14 +78,14 @@ public class DijkstraAlgorithm extends ShortestPathAlgorithm {
         				notifyNodeReached(arc.getDestination());
         			}
         			if(Double.compare(newdistance,olddistance) < 0) { // If the new cost is lower than the old one
-        				// Automatic update
-        				if (Double.isFinite(olddistance)) { // Remove the label first if it exists
+        				// Update ///////////////////////////////////////
+        				if (Double.isFinite(olddistance)) { // Remove the label first if it already exists
         					tas.remove(label_tab[successor.getId()]);
         				}
         				label_tab[successor.getId()].setCost(newdistance);
         				tas.insert(label_tab[successor.getId()]);
         				label_tab[successor.getId()].setFather(arc);
-        				////////////////////
+        				///////////////////////////////////////////////////
         			}
         		}
         	}
