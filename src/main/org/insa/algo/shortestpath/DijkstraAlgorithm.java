@@ -117,7 +117,14 @@ public class DijkstraAlgorithm extends ShortestPathAlgorithm {
             Collections.reverse(arcs);
 
             // Create the final solution.
-            solution = new ShortestPathSolution(data, Status.OPTIMAL, new Path(graph, arcs));
+            Path pathvalid = new Path(graph, arcs);
+            
+            if(pathvalid.isValid()) {
+            solution = new ShortestPathSolution(data, Status.OPTIMAL, pathvalid);
+            }
+            else {
+            	solution = new ShortestPathSolution(data, Status.INFEASIBLE);
+            }
         }	
         
         return solution;
