@@ -94,6 +94,9 @@ public class DijkstraAlgorithm extends ShortestPathAlgorithm {
         			}
         		}
         	}
+        	if (current_label.getCurrent_node() == data.getDestination().getId()) {
+        		break;
+        	}
         }
         
         // Destination has no predecessor, the solution is infeasible...

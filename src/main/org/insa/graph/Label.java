@@ -134,10 +134,18 @@ public class Label implements Comparable<Label> {
 	public void setFather(Arc father) {
 		this.father = father;
 	}
+	
+	public double getTotalCost() {
+		return cost;
+	}
 
 	@Override
 	public int compareTo(Label o) {
-		return Double.compare(getCost(), o.getCost());
+		if (Double.compare(getTotalCost(), o.getTotalCost()) == 0) {
+			return Double.compare(getTotalCost()-getCost(), o.getTotalCost()-o.getCost());
+		} else {
+			return Double.compare(getTotalCost(), o.getTotalCost());
+		}
 	}
 
 }
