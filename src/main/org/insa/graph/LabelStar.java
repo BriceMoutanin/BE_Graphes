@@ -11,7 +11,7 @@ public class LabelStar extends Label implements Comparable<Label> {
 
 	private Graph gr;
 	
-	private int origin_node;
+	private int destination_node;
 	
 	private double estimated_cost ;
 	
@@ -20,22 +20,22 @@ public class LabelStar extends Label implements Comparable<Label> {
 	 * @param cost
 	 * @param father
 	 */
-	public LabelStar(Graph gr, int current_node, double cost, Arc father, int origin_node) {
+	public LabelStar(Graph gr, int current_node, double cost, Arc father, int destination_node) {
 		super(current_node, cost, father);
 		this.gr = gr;
-		this.origin_node = origin_node;
-		this.estimated_cost = this.gr.getNodes().get(this.origin_node).getPoint().distanceTo(this.gr.getNodes().get(this.getCurrent_node()).getPoint());
+		this.destination_node = destination_node;
+		this.estimated_cost = this.gr.getNodes().get(this.destination_node).getPoint().distanceTo(this.gr.getNodes().get(this.getCurrent_node()).getPoint());
 	}
 
 	/**
 	 * @param current_node
 	 * @param cost
 	 */
-	public LabelStar(Graph gr, int current_node, double cost, int origin_node) {
+	public LabelStar(Graph gr, int current_node, double cost, int destination_node) {
 		super(current_node, cost);
 		this.gr = gr;
-		this.origin_node = origin_node;
-		this.estimated_cost = this.gr.getNodes().get(this.origin_node).getPoint().distanceTo(this.gr.getNodes().get(this.getCurrent_node()).getPoint());
+		this.destination_node = destination_node;
+		this.estimated_cost = this.gr.getNodes().get(this.destination_node).getPoint().distanceTo(this.gr.getNodes().get(this.getCurrent_node()).getPoint());
 	}
 	
 	public double getEstimated_Cost() {

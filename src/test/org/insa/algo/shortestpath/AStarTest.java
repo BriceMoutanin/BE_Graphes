@@ -24,20 +24,20 @@ import org.insa.graph.io.GraphReader;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
-public class Dijkstra_Bellman_comparison {
+public class AStarTest {
 	
 	private static Graph graph1, graph2, graph3 ;
 	private static ShortestPathData data_gr1_faisable, data_gr1_non_connexe, data_gr1_identique;
 	private static ShortestPathData data_gr2_faisable, data_gr2_non_connexe, data_gr2_identique;
 	private static ShortestPathData data_gr3_faisable, data_gr3_identique;
 	
-	private static DijkstraAlgorithm solD_data_gr1_faisable, solD_data_gr1_non_connexe, solD_data_gr1_identique;
-	private static DijkstraAlgorithm solD_data_gr2_faisable, solD_data_gr2_non_connexe, solD_data_gr2_identique;
-	private static DijkstraAlgorithm solD_data_gr3_faisable, solD_data_gr3_identique;
+	private static AStarAlgorithm solD_data_gr1_faisable, solD_data_gr1_non_connexe, solD_data_gr1_identique;
+	private static AStarAlgorithm solD_data_gr2_faisable, solD_data_gr2_non_connexe, solD_data_gr2_identique;
+	private static AStarAlgorithm solD_data_gr3_faisable, solD_data_gr3_identique;
 	
-	private static BellmanFordAlgorithm solB_data_gr1_faisable;
-	private static BellmanFordAlgorithm solB_data_gr2_faisable;
-	private static BellmanFordAlgorithm solB_data_gr3_faisable;
+	private static DijkstraAlgorithm solB_data_gr1_faisable;
+	private static DijkstraAlgorithm solB_data_gr2_faisable;
+	private static DijkstraAlgorithm solB_data_gr3_faisable;
 	
 	private static Path pathD_data_gr1_faisable;
 	private static Path pathD_data_gr2_faisable;
@@ -94,23 +94,23 @@ public class Dijkstra_Bellman_comparison {
     
     /** Dijkstra solutions definitions */
     
-    solD_data_gr1_faisable = new DijkstraAlgorithm(data_gr1_faisable) ;
-    solD_data_gr1_non_connexe = new DijkstraAlgorithm(data_gr1_non_connexe) ;
-    solD_data_gr1_identique = new DijkstraAlgorithm(data_gr1_identique) ;
+    solD_data_gr1_faisable = new AStarAlgorithm(data_gr1_faisable) ;
+    solD_data_gr1_non_connexe = new AStarAlgorithm(data_gr1_non_connexe) ;
+    solD_data_gr1_identique = new AStarAlgorithm(data_gr1_identique) ;
     
-    solD_data_gr2_faisable = new DijkstraAlgorithm(data_gr2_faisable) ;
-    solD_data_gr2_non_connexe = new DijkstraAlgorithm(data_gr2_non_connexe) ;
-    solD_data_gr2_identique = new DijkstraAlgorithm(data_gr2_identique) ;
+    solD_data_gr2_faisable = new AStarAlgorithm(data_gr2_faisable) ;
+    solD_data_gr2_non_connexe = new AStarAlgorithm(data_gr2_non_connexe) ;
+    solD_data_gr2_identique = new AStarAlgorithm(data_gr2_identique) ;
     
-    solD_data_gr3_faisable = new DijkstraAlgorithm(data_gr3_faisable) ;
-    solD_data_gr3_identique = new DijkstraAlgorithm(data_gr3_identique) ;
+    solD_data_gr3_faisable = new AStarAlgorithm(data_gr3_faisable) ;
+    solD_data_gr3_identique = new AStarAlgorithm(data_gr3_identique) ;
     
     
     /** Bellman-Ford solutions definitions */
 
-    solB_data_gr1_faisable = new BellmanFordAlgorithm(data_gr1_faisable) ;
-    solB_data_gr2_faisable = new BellmanFordAlgorithm(data_gr2_faisable) ;
-    solB_data_gr3_faisable = new BellmanFordAlgorithm(data_gr3_faisable) ;
+    solB_data_gr1_faisable = new DijkstraAlgorithm(data_gr1_faisable) ;
+    solB_data_gr2_faisable = new DijkstraAlgorithm(data_gr2_faisable) ;
+    solB_data_gr3_faisable = new DijkstraAlgorithm(data_gr3_faisable) ;
     
     pathD_data_gr1_faisable = solD_data_gr1_faisable.doRun().getPath();
 	pathD_data_gr2_faisable = solD_data_gr2_faisable.doRun().getPath();
@@ -140,7 +140,7 @@ public class Dijkstra_Bellman_comparison {
     public void testTravelTime() {
         assertEquals(pathD_data_gr1_faisable.getMinimumTravelTime(), pathB_data_gr1_faisable.getMinimumTravelTime(),1e-6);
         assertEquals(pathD_data_gr2_faisable.getMinimumTravelTime(), pathB_data_gr2_faisable.getMinimumTravelTime(),1e-6);
-        assertEquals(pathD_data_gr3_faisable.getMinimumTravelTime(), pathB_data_gr3_faisable.getMinimumTravelTime(),1e-6);    	
+        assertEquals(pathD_data_gr3_faisable.getMinimumTravelTime(), pathB_data_gr3_faisable.getMinimumTravelTime(),1e-6);   	
     }
     
     
