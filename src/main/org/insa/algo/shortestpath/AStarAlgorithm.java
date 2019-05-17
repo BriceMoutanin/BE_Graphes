@@ -41,12 +41,12 @@ public class AStarAlgorithm extends DijkstraAlgorithm {
         /* Label tab creation to stock the created labels
          * Insert the start node label in the Label list */
         LabelStar[] label_tab = new LabelStar[nbNodes];
-        label_tab[origin_node.getId()]=new LabelStar(graph,origin_node.getId(),0,destination_node.getId());
+        label_tab[origin_node.getId()]=new LabelStar(graph,origin_node.getId(),0,destination_node.getId(),data.getMode());
         
         /* Fill the label_tab with infinite costs for all nodes except the origin one */
         for(int i=0;i<nbNodes;i++) {
         	if(i != origin_node.getId()) {
-        		label_tab[i]=new LabelStar(graph,i,Float.POSITIVE_INFINITY,destination_node.getId());
+        		label_tab[i]=new LabelStar(graph,i,Float.POSITIVE_INFINITY,destination_node.getId(),data.getMode());
         	}
         }
         

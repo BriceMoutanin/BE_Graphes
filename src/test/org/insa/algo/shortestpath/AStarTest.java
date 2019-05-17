@@ -147,14 +147,13 @@ public class AStarTest {
     
     @Test
     public void testLength() {
-    	
         assertEquals(pathD_data_gr1_faisable.getLength(), pathB_data_gr1_faisable.getLength(),1e-6);
         assertEquals(pathD_data_gr2_faisable.getLength(), pathB_data_gr2_faisable.getLength(),1e-6);
         assertEquals(pathD_data_gr3_faisable.getLength(), pathB_data_gr3_faisable.getLength(),1e-6);    	
     }
     
-    //Vitesse differentes
-    //sous chemin
+    // Vitesse differentes
+    // sous chemin
     // inverser origine et destination
     
 }
