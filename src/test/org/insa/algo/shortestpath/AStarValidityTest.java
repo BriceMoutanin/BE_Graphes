@@ -91,18 +91,18 @@ public class AStarValidityTest {
 	
     // Visit these directory to see the list of available files on Commetud.
 		
-    //String mapName1 = "/home/commetud/3eme Annee MIC/Graphes-et-Algorithmes/Maps/new-zealand.mapgr";
-    //String mapName2 = "/home/commetud/3eme Annee MIC/Graphes-et-Algorithmes/Maps/paris.mapgr";
-    //String mapName3 = "/home/commetud/3eme Annee MIC/Graphes-et-Algorithmes/Maps/fractal-spiral.mapgr";
+    String mapName1 = "/home/commetud/3eme Annee MIC/Graphes-et-Algorithmes/Maps/new-zealand.mapgr";
+    String mapName2 = "/home/commetud/3eme Annee MIC/Graphes-et-Algorithmes/Maps/paris.mapgr";
+    String mapName3 = "/home/commetud/3eme Annee MIC/Graphes-et-Algorithmes/Maps/fractal-spiral.mapgr";
     
     // The following lines are just supposed to allow us to run our tests on our own computers //
     // String mapName1 = "/Users/bricemoutanin/Downloads/new-zealand.mapgr";
     // String mapName2 = "/Users/bricemoutanin/Downloads//paris.mapgr";
     // String mapName3 = "/Users/bricemoutanin/Downloads/fractal-spiral.mapgr";
 	
-    String mapName1 = "/home/babar/Bureau/maps/new-zealand.mapgr";
-    String mapName2 = "/home/babar/Bureau/maps/paris.mapgr";
-    String mapName3 = "/home/babar/Bureau/maps/fractal-spiral.mapgr";
+    //String mapName1 = "/home/babar/Bureau/maps/new-zealand.mapgr";
+    //String mapName2 = "/home/babar/Bureau/maps/paris.mapgr";
+    //String mapName3 = "/home/babar/Bureau/maps/fractal-spiral.mapgr";
 	
     /////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -307,14 +307,14 @@ public class AStarValidityTest {
     }
     
     @Test
-    public void NoOracle_reversedPathEquality_LengthMode() {
+    public void NoOracle_reversedPathLengthEquality_LengthMode() {
         assertEquals(pathD_data_gr1_faisable_l.getLength(), pathD_data_gr1_faisablev2_l.getLength(),1e3);
         assertEquals(pathD_data_gr2_faisable_l.getLength(), pathD_data_gr2_faisablev2_l.getLength(),1e3);
         assertEquals(pathD_data_gr3_faisable_l.getLength(), pathD_data_gr3_faisablev2_l.getLength(),1e3);    	
     }
     
     @Test
-    public void NoOracle_reversedPathEquality_TimeMode() {
+    public void NoOracle_reversedPathTimeEquality_TimeMode() {
         assertEquals(pathD_data_gr1_faisable_t.getMinimumTravelTime(), pathD_data_gr1_faisablev2_t.getMinimumTravelTime(),2e2);
         assertEquals(pathD_data_gr2_faisable_t.getMinimumTravelTime(), pathD_data_gr2_faisablev2_t.getMinimumTravelTime(),2e2);
         assertEquals(pathD_data_gr3_faisable_t.getMinimumTravelTime(), pathD_data_gr3_faisablev2_t.getMinimumTravelTime(),2e2);    	

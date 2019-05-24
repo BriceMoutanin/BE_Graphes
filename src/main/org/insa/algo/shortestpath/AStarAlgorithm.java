@@ -14,6 +14,8 @@ import org.insa.graph.Path;
 
 public class AStarAlgorithm extends DijkstraAlgorithm {
 
+	public  int visited_nodes = 0;
+	
     public AStarAlgorithm(ShortestPathData data) {
         super(data);
     }
@@ -86,6 +88,7 @@ public class AStarAlgorithm extends DijkstraAlgorithm {
         			}
         			if (Double.isInfinite(olddistance) && Double.isFinite(newdistance)) {
         				notifyNodeReached(arc.getDestination());
+        				visited_nodes++;
         			}
         			if(Double.compare(newdistance,olddistance) < 0) { // If the new cost is lower than the old one
         				// Update ///////////////////////////////////////
