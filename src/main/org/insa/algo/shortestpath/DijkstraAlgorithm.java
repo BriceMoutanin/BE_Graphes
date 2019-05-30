@@ -15,6 +15,12 @@ public class DijkstraAlgorithm extends ShortestPathAlgorithm {
 
 	public int visited_nodes = 0;
 	
+	public long duration = 0;
+	
+	public int taille_max_tas = 0;
+	
+	public int marked_nodes = 0;
+	
     public DijkstraAlgorithm(ShortestPathData data) {
         super(data);
     }
@@ -55,7 +61,14 @@ public class DijkstraAlgorithm extends ShortestPathAlgorithm {
                 
         Label current_label;
         
+        long debut = System.currentTimeMillis();
+        
         while(!tas.isEmpty()){
+        	// Update of the maximum size of the heap
+        	if(tas.size() > this.taille_max_tas) {
+        		this.taille_max_tas=tas.size();
+        	}
+        	
         	current_label = tas.deleteMin();
         	label_tab[current_label.getCurrent_node()].setMarque(true);
         	if (current_label.getFather() != null) {
@@ -63,7 +76,7 @@ public class DijkstraAlgorithm extends ShortestPathAlgorithm {
         		predecessorArcs[current_label.getFather().getDestination().getId()] = current_label.getFather();
         	}
         	double current_length = current_label.getCost();
-        	current_label.setMarque(true);
+        	current_label.setMarque(true); this.marked_nodes++;
         	for(Arc arc: graph.getNodes().get(current_label.getCurrent_node()).getSuccessors()) { // For each successors 
         																						  // of the current node
         		// Small test to check allowed roads...
@@ -100,6 +113,8 @@ public class DijkstraAlgorithm extends ShortestPathAlgorithm {
         	}
         }
         
+        this.duration = (System.currentTimeMillis()-debut);
+        
         // Destination has no predecessor, the solution is infeasible...
         if (predecessorArcs[data.getDestination().getId()] == null) {
             solution = new ShortestPathSolution(data, Status.INFEASIBLE);
@@ -124,13 +139,12 @@ public class DijkstraAlgorithm extends ShortestPathAlgorithm {
             Path pathvalid = new Path(graph, arcs);
             
             if(pathvalid.isValid()) {
-            solution = new ShortestPathSolution(data, Status.OPTIMAL, pathvalid);
+            	solution = new ShortestPathSolution(data, Status.OPTIMAL, pathvalid);
             }
             else {
             	solution = new ShortestPathSolution(data, Status.INFEASIBLE);
             }
         }	
-        
         return solution;
     }
 

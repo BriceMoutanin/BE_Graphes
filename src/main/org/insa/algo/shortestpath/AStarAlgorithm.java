@@ -16,6 +16,12 @@ public class AStarAlgorithm extends DijkstraAlgorithm {
 
 	public  int visited_nodes = 0;
 	
+	public long duration = 0;
+	
+	public int taille_max_tas = 0;
+	
+	public int marked_nodes = 0;
+	
     public AStarAlgorithm(ShortestPathData data) {
         super(data);
     }
@@ -62,11 +68,19 @@ public class AStarAlgorithm extends DijkstraAlgorithm {
         
         LabelStar current_label;
         
+        long debut = System.currentTimeMillis();
+        
         while(!tas.isEmpty()){
+        	
+        	// Update of the maximum size of the heap
+        	if(tas.size() > this.taille_max_tas) {
+        		this.taille_max_tas=tas.size();
+        	}
+        	
         	current_label = (LabelStar) tas.deleteMin();
         	//tas.print();
         	//System.out.println("On enlève : " + current_label.toString());
-        	label_tab[current_label.getCurrent_node()].setMarque(true);
+        	label_tab[current_label.getCurrent_node()].setMarque(true); this.marked_nodes++;
         	if (current_label.getFather() != null) {
         		predecessorArcs[current_label.getFather().getDestination().getId()] = current_label.getFather(); // Add the previous arc to the solution
         	}
@@ -106,6 +120,8 @@ public class AStarAlgorithm extends DijkstraAlgorithm {
         		break;
         	}
         }
+        
+        this.duration = (System.currentTimeMillis()-debut);
         
         // Destination has no predecessor, the solution is infeasible...
         if (predecessorArcs[data.getDestination().getId()] == null) {
